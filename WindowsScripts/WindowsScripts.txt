@@ -1,0 +1,140 @@
+Navigation commands
+	dir				view directories
+	dir  c:\users /ah		view specific directory , /a displays all files, /h displays hidden files
+	dir  c:\windows\*.exe /s /b	See a specific set of files, /s displays all files matching in parent and subdirectories, /b only shows path and filenames
+	
+
+Ipconfig				View IP address, subnet mask, default gateway
+	/all				view complete details of ip addresses
+	/flushdns			clear dns cache
+	/registerdns			re-register dns names
+	/displaydns			display DNS Resolver Cache
+	/release			dynamically release assigned IP addresses
+	/renew				get IP address from server
+`	
+	
+Ping 192.168.2.1				Send ICMP echo request message to 192.168.2.1
+	-n 3 192.168.2.1			sends predefined number(3) of packets
+	-a 192.168.2.1				Find hostname of system
+	hostname				Ping using the hostname
+	-t 192.168.2.1				Runs the ping indefinatley, press ctrl + c to cancel
+	
+	
+	
+					
+tracert 192.168.2.1				Trace a path to destination system
+	-d 192.168.2.1				Trace path without performing name resolution
+	-w 500 intranet				Specify timeout
+	
+	
+	
+
+netstat						Shows all active TCP connections and state
+	-o					Show state of all TCP Connections with Process ID (PID)
+	-s -p tcp				view informatoin about particular protocol, such as tcp
+	-e -t 5					update connection statistics every 5 seconds
+	-a					List all TCP and UDP connections
+
+nslookup						Display information useful for dns
+	practicelabs.com				Find the A record for a domain
+	-tpe=ns practicelabs.com			Find Name Server for a domain
+	-type=soa practicelabs.com			Query the Start of Authority record for a domain
+	-type=any practicelabs.com			Find all DNS records for a domain
+	practicelabs.com plabcd01.practicelabs.com	To use specific DNS server for domain
+	192.168.0.1					Perform a reverse lookup using IP address
+	-timeout=200 practicelabs.com			To increase timeout 
+	-debug practicelabs.com				Generates questions and answers with detailed information
+
+shutdown /r						Restart the system
+shutdown /r /t 0 					Restart the system immediately
+
+dism							Deployment image servicing and management, used to identify issues with windows system files and fix errors.
+	/online /cleanup-image /checkhealth		detects corruption does not repair it 
+	/online /cleanup-image /scanhealth		Scans for issues in Windows Image
+	/online /cleanup-image /restorehealth		Scans for issues and repairs automatically
+	
+sfc							System File Checker, performs fault identifacation and correction of System files.
+	/scannow					Checks protected system files and repairs if required
+	/scanfile=c:\windows\system22\ieframe.dll	SFC command to repair specific file
+	/verifyonly					Verify the protected files
+	
+chkdsk							Scans specified sector of local hard disk or external storage. Mark damaged sectors and recover informatoin.
+	/C						Skip checking cycles in folder structure
+	c: /f /r					/f fix hard drive erors, /r to locate bad sectors
+	
+diskpart						partioning activity create resize delete partitions of harddrive and external storage
+	list disk					View all available disks in system
+	select disk 1					Select a disk
+	list partition					List partitions on selected disk
+	select partition 2				select the partition
+	ative						Make the partition active
+	Format FS=NTFS labe=f quick			Quick format with NTFS file system, assign dive letter F
+	
+taskkill						End task
+	/f /im notepad.exe				kill notepad.exe
+	/pid 1234					Using PID
+	
+gpupdate						Update the domain policies
+	/force						Apply all the domain policies not just updated ones
+	/Target:User					By default user and comptuer polices are applied, can choose to aply either user or computer
+	/Wait:0						Remove default seconds for wait to wait for policy processing
+	
+
+gpresult						Generate resultant set of applicable polices after consdering the overlapping
+	/r 						Display RSoP Summary Data
+	/z						Display all information aobut Group Policy
+	/s plabdc01 /r					Display policy details of a remote computer
+	
+
+format							Format selected partition
+	d: /q						format D drive
+	
+
+copy							copy file from one location to another
+	ABCD.txt c:\users				Copy ABCD.txt to directory users
+	/Y ABCD.txt c:\Users				/Y Supressing prompt for confirmation to overwrite file
+	
+xcopy							Copy files, directories from source to specified loation
+	/Y *.txt C:\Users				Copy all files in current directory to Downloads directory
+	c:\PLAB Downloads /e				Copy PLAB Directory to Downloads directory including empty 
+
+robocopy						Copies file data, necessary parameters, source directory, destination direectory, file, whose contents teo get copied
+	Downloads c:\Users				Copy Downloads Directory and sub directories to C:\Users
+	
+net use							connect computer to shared folder/drive
+	z:						View existing network connection that has been mapped to drive letter 
+	x: \\plabwin810\c$ /persistent:yes		Map x drive to \\plabwin810\c$ drive, persistent:yes means will be available next time you log on
+	x: /delete					Delete drive mapping
+	
+net user						Perform user account related tasks, create new user, modify user
+	administrator					View informatoin abotu specific user ( administrator ) 
+	wilson Passw0rd /add /times:ALL			create a new account with name wilson, password: Passw0rd, /add adds the user, configured to log on all days of week
+	Wilson /delete					delete user
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+						
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+							

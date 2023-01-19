@@ -1,0 +1,5 @@
+sudo lvs 												// List available space in logical volume
+
+sudo lvcreate --size 5GB --snapshot --name practice /dev/VGName/LVName 					// replade VGname and LVname with respective names
+
+																

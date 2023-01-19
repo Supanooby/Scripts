@@ -1,0 +1,141 @@
+ls - list
+ls -a = list all
+ls -l = list long 
+
+cat = concatenate ( add it to end of something ) 
+cp = copy
+
+mv = move or rename
+	mv fileToBeCopied.txt fileCopied.txt
+	mv fileToBeMoved.txt	/destinationFolder
+
+chmod = Change permission
+	chmod 777 practicelabs = change permission , 7 for admin, 7 for user, 7 for guest, target file
+
+ps = process status
+
+vi = text editor
+	vi testFile.txt = press i to insert inside text, and press esq and enter :wq to save and quit
+
+dd = copying data including backuping up hard disk or partition
+	sudo dd if=/dev/sda1 of=/file.img
+
+top = shows applications
+	press q to exit 
+
+kill = terminates process
+	kill id = terminates, process id
+
+pwd = print working directory ( prints current directory )
+
+passwd = changes passwd
+	sudo passwd user 
+
+ifconfig = shows network informatoin
+	ifconfig eth0 = shows port specific information
+
+sudo yum check-update = checks for updates for software
+
+sudo yum update = updates software
+	-y	= Searches online for updates
+
+sudo yum update httpd = Update specified software ( httpd ) 
+
+sudo yum repolist = check which software packages are available on system
+
+sudo yum repolist all = display all repos including ones that are disabled on your system
+
+sudo yum search httpd = search for specific package ( httpd ) to install
+
+sudo yum install httpd = install specified package ( httpd ) 
+
+sudo yum info httpd = get information about specified package ( httpd )
+
+sudo yum remove httpd = remove specified package ( httpd ) 
+
+sudo shutdown -r = restarts machine
+
+Scheduled Backups
+
+pwd 					// Verify we are working in present directory
+sudo mkdir /backup			// Create directory named backup in root
+cd /var/				// Change directory to var
+sudo touch backupscript.sh		// create file named backupscript.sh
+sudo vi backupscript.sh			// open backupscript.sh in vi editor
+
+// Script for backing up 
+
+#!/bin/bash
+#Backup Administrator’s Home directory to /backup
+echo “Backing up Administrator’s Home directory to /backup”
+rsync -a --no-whole-file /home/administrator /backup
+
+sudo crontab -e = Cronjob application ( Inbuilt scheduler from Linux ) 
+	*/5 * * * * /bin/bash /var/backupscript.sh  			// cronjob text, set time interval, 
+
+service crond restart		// Must restart CronJob Application for scheduler events to take place
+
+df = Displays Hard Drive Partitions
+	df -h 			// Displays it in human readable form
+
+fsck				// Used to check and optionally repair Linux Filesystems
+
+
+
+fdisk				// used for creation and maaniupaltion of partition tables
+	sudo fdisk /dev/sda
+	p			// Prints partition tables
+
+
+Updates to specific firmware and drivers
+
+sudo wget http://linux.dell.com/repo/hardware/dsu/bootstrap.cgi | bash				// 
+
+sudo cp bootstrap.cgi bootstrap.sh
+sudo chmod 777 bootstrap.sh
+ls -l bootstrap.sh
+sudo ./bootstrap.sh
+sudo yum install dell-system-update
+
+sudo dsu -i 			// List all firmware packages available on local machine 
+
+sudo dsu --apply-upgrades	// apply dowlnoaded packages containing functionality for upgrade
+
+sudo lvs			// Check size of availble space in logical volumes
+
+sudo lvcreate --size 5GB --snapshot --name practice /dev/VGname/LVname		// put the correct names for VGname and LVnames, and this will creates the snapshot
+
+sudo lvdisplay									// display relevant informatoin about logical volume
+
+sudo dd if=/dev/sda1 conv=sync,noerror bs=128K | gzip -c > centos-core-7.gz	// Creates backup image
+
+sudo gunzip -c centos-core-7.gz | sudo dd of=/dev/sda1				// Restores Backup Image 
+
+sudo su 									// Go into admin mode
+
+exit										// Exits admin mode
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
